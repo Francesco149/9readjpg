@@ -1307,7 +1307,7 @@ enum {
     c1 = 2871,  /* 1.402 * 2048 */
     c2 = 705,       /* 0.34414 * 2048 */
     c3 = 1463,  /* 0.71414 * 2048 */
-    c4 = 3629,  /* 1.772 * 2048 */
+    c4 = 3629  /* 1.772 * 2048 */
 };
 
 static
@@ -1518,6 +1518,7 @@ static
 int
 nextbyte(Header *h, int marker)
 {
+    int original_b2;
     int b, b2;
 
     if(h->peek >= 0){
@@ -1533,7 +1534,6 @@ nextbyte(Header *h, int marker)
     if(b == 0xFF){
         if(marker)
             return b;
-        char original_b2;
         b2 = getc(h->fd);
         original_b2 = b2;
         if(b2 != 0){
